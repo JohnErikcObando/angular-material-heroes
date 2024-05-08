@@ -11,6 +11,6 @@ export class CardComponent {
   public hero!: Hero;
 
   ngOnInit(): void {
-    if (!this.hero) throw Error('Hero Property is required');
+    if (!this.hero) throw Error('Hero property is required');
   }
 }

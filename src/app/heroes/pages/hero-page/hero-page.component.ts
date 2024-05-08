@@ -11,17 +11,21 @@ import { Hero } from '../interfaces/hero.interface';
 })
 export class HeroPageComponent {
   public hero?: Hero;
+
   constructor(
     private heroesService: HeroesService,
-    private ActivatedRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.ActivatedRoute.params
+    this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
       .subscribe((hero) => {
-        if (!hero) return this.router.navigate(['heroes/list']);
+
+        console.log({hero});
+
+        if (!hero) return this.router.navigate(['/heroes/list']);
 
         this.hero = hero;
         return;
